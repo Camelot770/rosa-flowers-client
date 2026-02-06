@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '../store/cart';
+import { imageUrl } from '../utils/image';
 
 export default function Cart() {
   const navigate = useNavigate();
   const { items, removeItem, updateQuantity, totalPrice, clearCart } = useCartStore();
-  const API_URL = import.meta.env.VITE_API_URL || '';
 
   if (items.length === 0) {
     return (
@@ -43,7 +43,7 @@ export default function Cart() {
           <div key={item.id} className="bg-white rounded-xl p-3 shadow-sm flex">
             <div className="w-20 h-20 bg-pink-50 rounded-lg shrink-0 flex items-center justify-center overflow-hidden">
               {item.image ? (
-                <img src={`${API_URL}${item.image}`} alt={item.name} className="w-full h-full object-cover" />
+                <img src={imageUrl(item.image)} alt={item.name} className="w-full h-full object-cover" />
               ) : (
                 <span className="text-3xl">{item.isConstructor ? '🎨' : '🌹'}</span>
               )}

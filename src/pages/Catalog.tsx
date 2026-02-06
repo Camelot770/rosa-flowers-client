@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Heart, Search, SlidersHorizontal } from 'lucide-react';
 import api from '../api/client';
@@ -38,7 +38,7 @@ const SORT_OPTIONS = [
   { value: 'new', label: 'Новинки' },
 ];
 
-const API_URL = import.meta.env.VITE_API_URL || '';
+import { imageUrl } from '../utils/image';
 
 export default function Catalog() {
   const navigate = useNavigate();
@@ -47,17 +47,20 @@ export default function Catalog() {
   const [bouquets, setBouquets] = useState<Bouquet[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState(searchParams.get('category') || '');
   const [sort, setSort] = useState('');
   const [showSort, setShowSort] = useState(false);
-  const [favorites, setFavorites] = useState<Set<number>>(() => {
-    try {
-      const saved = localStorage.getItem('rosa_favorites');
-      return saved ? new Set(JSON.parse(saved)) : new Set();
-    } catch {
-      return new Set();
-    }
-  });
+  const [favorites, setFavorites] = useState<Set<number>>(new Set());
+  const searchTimeout = useRef<ReturnType<typeof setTimeout>>();
+
+  // Load favorites from server
+  useEffect(() => {
+    api.get('/favorites').then(({ data }) => {
+      const ids = data.map((f: any) => f.bouquetId);
+      setFavorites(new Set(ids));
+    }).catch(() => {});
+  }, []);
 
   useEffect(() => {
     const categoryFromUrl = searchParams.get('category') || '';
@@ -66,16 +69,24 @@ export default function Catalog() {
     }
   }, [searchParams]);
 
+  // Debounce search
+  useEffect(() => {
+    searchTimeout.current = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 300);
+    return () => clearTimeout(searchTimeout.current);
+  }, [searchQuery]);
+
   useEffect(() => {
     fetchBouquets();
-  }, [activeCategory, searchQuery, sort]);
+  }, [activeCategory, debouncedSearch, sort]);
 
   const fetchBouquets = async () => {
     setLoading(true);
     try {
       const params: Record<string, string> = {};
       if (activeCategory) params.category = activeCategory;
-      if (searchQuery) params.search = searchQuery;
+      if (debouncedSearch) params.search = debouncedSearch;
       if (sort) params.sort = sort;
 
       const { data } = await api.get<Bouquet[]>('/bouquets', { params });
@@ -96,18 +107,17 @@ export default function Catalog() {
     }
   };
 
-  const toggleFavorite = (e: React.MouseEvent, id: number) => {
+  const toggleFavorite = async (e: React.MouseEvent, id: number) => {
     e.stopPropagation();
-    setFavorites((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
+    try {
+      if (favorites.has(id)) {
+        await api.delete(`/favorites/${id}`);
+        setFavorites((prev) => { const next = new Set(prev); next.delete(id); return next; });
       } else {
-        next.add(id);
+        await api.post(`/favorites/${id}`);
+        setFavorites((prev) => { const next = new Set(prev); next.add(id); return next; });
       }
-      localStorage.setItem('rosa_favorites', JSON.stringify([...next]));
-      return next;
-    });
+    } catch {}
   };
 
   const handleSearch = (value: string) => {
@@ -116,7 +126,7 @@ export default function Catalog() {
 
   const getImageUrl = (bouquet: Bouquet): string | null => {
     if (bouquet.images && bouquet.images.length > 0 && bouquet.images[0].url) {
-      return `${API_URL}${bouquet.images[0].url}`;
+      return imageUrl(bouquet.images[0].url);
     }
     return null;
   };

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Heart, ShoppingBag } from 'lucide-react';
 import api from '../api/client';
+import { imageUrl } from '../utils/image';
 import { useCartStore } from '../store/cart';
 
 interface FavItem {
@@ -20,7 +21,6 @@ export default function Favorites() {
   const addItem = useCartStore((s) => s.addItem);
   const [favorites, setFavorites] = useState<FavItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const API_URL = import.meta.env.VITE_API_URL || '';
 
   useEffect(() => {
     api.get('/favorites').then(({ data }) => {
@@ -89,7 +89,7 @@ export default function Favorites() {
             >
               {fav.bouquet.images[0]?.url ? (
                 <img
-                  src={`${API_URL}${fav.bouquet.images[0].url}`}
+                  src={imageUrl(fav.bouquet.images[0].url)}
                   alt={fav.bouquet.name}
                   className="w-full h-full object-cover"
                 />
