@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Plus, Minus, ShoppingBag } from 'lucide-react';
 import api from '../api/client';
+import { imageUrl } from '../utils/image';
 import { useCartStore } from '../store/cart';
 
 interface ConstructorItem {
@@ -28,7 +29,6 @@ export default function Constructor() {
   const [step, setStep] = useState(0); // 0=flowers, 1=greenery, 2=packaging
   const [loading, setLoading] = useState(true);
 
-  const API_URL = import.meta.env.VITE_API_URL || '';
 
   useEffect(() => {
     api.get('/constructor').then(({ data }) => {
@@ -165,7 +165,7 @@ export default function Constructor() {
                 <div key={f.id} className="flex items-center bg-white rounded-xl p-3 shadow-sm">
                   <div className="w-14 h-14 bg-pink-50 rounded-lg flex items-center justify-center text-2xl shrink-0">
                     {f.imageUrl ? (
-                      <img src={`${API_URL}${f.imageUrl}`} alt={f.name} className="w-full h-full object-cover rounded-lg" />
+                      <img src={imageUrl(f.imageUrl || '')} alt={f.name} className="w-full h-full object-cover rounded-lg" />
                     ) : '🌸'}
                   </div>
                   <div className="ml-3 flex-1">
@@ -199,7 +199,7 @@ export default function Constructor() {
                 <div key={g.id} className="flex items-center bg-white rounded-xl p-3 shadow-sm">
                   <div className="w-14 h-14 bg-green-50 rounded-lg flex items-center justify-center text-2xl shrink-0">
                     {g.imageUrl ? (
-                      <img src={`${API_URL}${g.imageUrl}`} alt={g.name} className="w-full h-full object-cover rounded-lg" />
+                      <img src={imageUrl(g.imageUrl || '')} alt={g.name} className="w-full h-full object-cover rounded-lg" />
                     ) : '🌿'}
                   </div>
                   <div className="ml-3 flex-1">
@@ -237,7 +237,7 @@ export default function Constructor() {
               >
                 <div className="w-14 h-14 bg-amber-50 rounded-lg flex items-center justify-center text-2xl shrink-0">
                   {p.imageUrl ? (
-                    <img src={`${API_URL}${p.imageUrl}`} alt={p.name} className="w-full h-full object-cover rounded-lg" />
+                    <img src={imageUrl(p.imageUrl || '')} alt={p.name} className="w-full h-full object-cover rounded-lg" />
                   ) : '📦'}
                 </div>
                 <div className="ml-3 flex-1 text-left">

@@ -45,8 +45,30 @@ export default function Checkout() {
     '9:00–12:00', '12:00–15:00', '15:00–18:00', '18:00–21:00',
   ];
 
+  const [validationError, setValidationError] = useState('');
+
   const handleSubmit = async () => {
     if (items.length === 0) return;
+    setValidationError('');
+
+    // Validation
+    if (!recipientPhone.trim()) {
+      setValidationError('Укажите телефон получателя');
+      return;
+    }
+    if (!deliveryDate) {
+      setValidationError('Выберите дату доставки');
+      return;
+    }
+    if (!deliveryTime) {
+      setValidationError('Выберите время доставки');
+      return;
+    }
+    if (deliveryType === 'delivery' && !selectedAddress && user?.addresses?.length) {
+      setValidationError('Выберите адрес доставки');
+      return;
+    }
+
     setSubmitting(true);
     try {
       const orderData = {
@@ -77,7 +99,13 @@ export default function Checkout() {
         const { data: payment } = await api.post('/payment/create', { orderId: order.id });
         if (payment.confirmationUrl) {
           clearCart();
-          window.location.href = payment.confirmationUrl;
+          const tg = (window as any).Telegram?.WebApp;
+          if (tg?.openLink) {
+            tg.openLink(payment.confirmationUrl);
+          } else {
+            window.open(payment.confirmationUrl, '_blank');
+          }
+          navigate('/orders');
           return;
         }
       } catch {
@@ -296,6 +324,10 @@ export default function Checkout() {
               <span className="text-primary">{finalPrice} ₽</span>
             </div>
           </div>
+
+          {validationError && (
+            <p className="text-sm text-red-500 mt-2">{validationError}</p>
+          )}
 
           <button
             onClick={handleSubmit}

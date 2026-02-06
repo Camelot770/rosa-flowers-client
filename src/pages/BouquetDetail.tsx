@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Heart, ShoppingBag, ChevronLeft, ChevronRight } from 'lucide-react';
 import api from '../api/client';
+import { imageUrl } from '../utils/image';
 import { useCartStore } from '../store/cart';
 
 interface Bouquet {
@@ -26,7 +27,6 @@ export default function BouquetDetail() {
   const [isFav, setIsFav] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = import.meta.env.VITE_API_URL || '';
 
   useEffect(() => {
     api.get(`/bouquets/${id}`).then(({ data }) => {
@@ -93,7 +93,7 @@ export default function BouquetDetail() {
       <div className="relative aspect-square bg-pink-50">
         {images[currentImage]?.url ? (
           <img
-            src={`${API_URL}${images[currentImage].url}`}
+            src={imageUrl(images[currentImage].url)}
             alt={bouquet.name}
             className="w-full h-full object-cover"
           />

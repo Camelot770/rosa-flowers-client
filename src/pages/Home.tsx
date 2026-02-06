@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import api from '../api/client';
 
-const API_URL = import.meta.env.VITE_API_URL || '';
+import { imageUrl } from '../utils/image';
 
 interface Bouquet {
   id: number;
@@ -68,7 +68,7 @@ export default function Home() {
       <div className="relative w-full h-44 bg-gray-100">
         {bouquet.images?.[0]?.url ? (
           <img
-            src={`${API_URL}${bouquet.images[0].url}`}
+            src={imageUrl(bouquet.images[0].url)}
             alt={bouquet.name}
             className="w-full h-full object-cover"
           />
@@ -180,7 +180,7 @@ export default function Home() {
             <h2 className="text-lg font-bold text-gray-800">Хиты продаж</h2>
           </div>
           <button
-            onClick={() => navigate('/catalog?filter=hits')}
+            onClick={() => navigate('/catalog?isHit=true')}
             className="flex items-center gap-0.5 text-sm text-primary-dark font-medium"
           >
             Все <ChevronRight size={16} />
@@ -207,7 +207,7 @@ export default function Home() {
             <h2 className="text-lg font-bold text-gray-800">Новинки</h2>
           </div>
           <button
-            onClick={() => navigate('/catalog?filter=new')}
+            onClick={() => navigate('/catalog?isNew=true')}
             className="flex items-center gap-0.5 text-sm text-primary-dark font-medium"
           >
             Все <ChevronRight size={16} />
