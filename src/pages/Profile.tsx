@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Package, Heart, Star, MapPin, Phone, Info } from 'lucide-react';
+import { Package, Heart, Star, MapPin, Phone, Info, MessageCircle } from 'lucide-react';
 import { useUserStore } from '../store/user';
 
 export default function Profile() {
@@ -88,6 +88,19 @@ export default function Profile() {
           <div className="text-left flex-1">
             <p className="font-medium">О студии</p>
             <p className="text-xs text-gray-400">Контакты и информация</p>
+          </div>
+        </button>
+
+        <button
+          onClick={() => navigate('/contact')}
+          className="w-full flex items-center gap-3 bg-white rounded-xl p-4 shadow-sm"
+        >
+          <div className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center">
+            <MessageCircle size={20} className="text-purple-500" />
+          </div>
+          <div className="text-left flex-1">
+            <p className="font-medium">Написать нам</p>
+            <p className="text-xs text-gray-400">Задайте вопрос</p>
           </div>
         </button>
 
