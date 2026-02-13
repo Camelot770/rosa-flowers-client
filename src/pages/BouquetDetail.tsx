@@ -77,7 +77,7 @@ export default function BouquetDetail() {
   if (!bouquet) {
     return (
       <div className="p-4 text-center mt-20">
-        <p className="text-gray-500">Букет не найден</p>
+        <p className="text-gray-700 font-medium">Букет не найден</p>
         <button onClick={() => navigate('/catalog')} className="mt-4 text-primary">
           Вернуться в каталог
         </button>
@@ -166,16 +166,16 @@ export default function BouquetDetail() {
         <div className="flex items-baseline gap-3 mt-2">
           <span className="text-2xl font-bold text-primary">{bouquet.price} ₽</span>
           {bouquet.oldPrice && (
-            <span className="text-lg text-gray-400 line-through">{bouquet.oldPrice} ₽</span>
+            <span className="text-lg text-gray-500 line-through">{bouquet.oldPrice} ₽</span>
           )}
         </div>
 
-        <p className="text-gray-600 mt-3 leading-relaxed">{bouquet.description}</p>
+        <p className="text-gray-800 font-medium mt-3 leading-relaxed">{bouquet.description}</p>
 
         {bouquet.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-3">
             {bouquet.tags.map((tag) => (
-              <span key={tag} className="bg-pink-50 text-primary text-xs px-2.5 py-1 rounded-full">
+              <span key={tag} className="bg-pink-50 text-primary text-xs font-medium px-2.5 py-1 rounded-full">
                 #{tag}
               </span>
             ))}

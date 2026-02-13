@@ -144,7 +144,7 @@ export default function Checkout() {
             <button
               onClick={() => setDeliveryType('delivery')}
               className={`flex-1 py-2.5 rounded-xl text-sm font-medium ${
-                deliveryType === 'delivery' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-600'
+                deliveryType === 'delivery' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-800 font-semibold'
               }`}
             >
               Доставка
@@ -152,7 +152,7 @@ export default function Checkout() {
             <button
               onClick={() => setDeliveryType('pickup')}
               className={`flex-1 py-2.5 rounded-xl text-sm font-medium ${
-                deliveryType === 'pickup' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-600'
+                deliveryType === 'pickup' ? 'bg-primary text-white' : 'bg-gray-100 text-gray-800 font-semibold'
               }`}
             >
               Самовывоз
@@ -164,7 +164,7 @@ export default function Checkout() {
                 <select
                   value={selectedAddress || ''}
                   onChange={(e) => setSelectedAddress(Number(e.target.value))}
-                  className="w-full border rounded-xl px-3 py-2.5 text-sm"
+                  className="w-full border rounded-xl px-3 py-2.5 text-sm text-gray-900 font-medium"
                 >
                   {user.addresses.map((a: any) => (
                     <option key={a.id} value={a.id}>
@@ -173,19 +173,19 @@ export default function Checkout() {
                   ))}
                 </select>
               ) : (
-                <p className="text-sm text-gray-500">
+                <p className="text-sm font-medium text-gray-700">
                   Добавьте адрес в профиле или укажите в комментарии
                 </p>
               )}
               {subtotal < freeFrom && (
-                <p className="text-xs text-gray-400 mt-2">
+                <p className="text-xs font-medium text-gray-600 mt-2">
                   Доставка {deliveryPrice}₽ (бесплатно от {freeFrom}₽)
                 </p>
               )}
             </div>
           )}
           {deliveryType === 'pickup' && (
-            <p className="text-sm text-gray-500 mt-3">
+            <p className="text-sm font-medium text-gray-800 mt-3">
               📍 {settings.address || 'д. Званка, ул. Приозёрная, д. 58'}
             </p>
           )}
@@ -210,7 +210,7 @@ export default function Checkout() {
                 key={slot}
                 onClick={() => setDeliveryTime(slot)}
                 className={`py-2 rounded-xl text-sm ${
-                  deliveryTime === slot ? 'bg-primary text-white' : 'bg-gray-100 text-gray-600'
+                  deliveryTime === slot ? 'bg-primary text-white' : 'bg-gray-100 text-gray-800 font-semibold'
                 }`}
               >
                 {slot}
@@ -292,7 +292,7 @@ export default function Checkout() {
               />
               <span className="font-bold text-primary w-16 text-right">−{bonusUsed}₽</span>
             </div>
-            <p className="text-xs text-gray-400 mt-1">
+            <p className="text-xs font-medium text-gray-600 mt-1">
               Максимум {maxBonusPercent}% от суммы заказа
             </p>
           </div>
@@ -302,13 +302,13 @@ export default function Checkout() {
         <div className="bg-white rounded-2xl p-4 shadow-sm">
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
-              <span className="text-gray-500">Товары</span>
-              <span>{subtotal} ₽</span>
+              <span className="text-gray-700 font-medium">Товары</span>
+              <span className="font-semibold text-gray-900">{subtotal} ₽</span>
             </div>
             {deliveryCost > 0 && (
               <div className="flex justify-between">
-                <span className="text-gray-500">Доставка</span>
-                <span>{deliveryCost} ₽</span>
+                <span className="text-gray-700 font-medium">Доставка</span>
+                <span className="font-semibold text-gray-900">{deliveryCost} ₽</span>
               </div>
             )}
             {bonusUsed > 0 && (

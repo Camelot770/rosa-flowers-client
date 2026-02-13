@@ -186,7 +186,7 @@ export default function Catalog() {
             className={`flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
               activeCategory === cat.value
                 ? 'bg-primary text-white'
-                : 'bg-white text-gray-600 border border-gray-200'
+                : 'bg-white text-gray-800 font-semibold border border-gray-200'
             }`}
           >
             {cat.label}
@@ -208,10 +208,10 @@ export default function Catalog() {
           ))}
         </div>
       ) : bouquets.length === 0 ? (
-        <div className="text-center py-16 text-gray-400">
+        <div className="text-center py-16 text-gray-600">
           <Search size={48} className="mx-auto mb-3 opacity-50" />
-          <p className="text-base font-medium">Ничего не найдено</p>
-          <p className="text-sm mt-1">Попробуйте изменить фильтры</p>
+          <p className="text-base font-bold text-gray-800">Ничего не найдено</p>
+          <p className="text-sm font-medium mt-1">Попробуйте изменить фильтры</p>
         </div>
       ) : (
         /* Bouquet grid */
@@ -269,7 +269,7 @@ export default function Catalog() {
 
                 {/* Info */}
                 <div className="p-3">
-                  <p className="text-sm font-medium text-gray-800 leading-tight line-clamp-2 mb-1.5">
+                  <p className="text-sm font-semibold text-gray-900 leading-tight line-clamp-2 mb-1.5">
                     {bouquet.name}
                   </p>
                   <div className="flex items-baseline gap-2">
@@ -277,7 +277,7 @@ export default function Catalog() {
                       {formatPrice(bouquet.price)} ₽
                     </span>
                     {bouquet.oldPrice && (
-                      <span className="text-xs text-gray-400 line-through">
+                      <span className="text-xs text-gray-500 line-through">
                         {formatPrice(bouquet.oldPrice)} ₽
                       </span>
                     )}

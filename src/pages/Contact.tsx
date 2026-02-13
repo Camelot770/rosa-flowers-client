@@ -61,9 +61,9 @@ export default function Contact() {
             onChange={(e) => setMessage(e.target.value)}
             maxLength={2000}
             rows={5}
-            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+            className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-900 resize-none focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
           />
-          <p className="text-xs text-gray-400 mt-1 text-right">
+          <p className="text-xs font-medium text-gray-600 mt-1 text-right">
             {message.length}/2000
           </p>
         </div>

@@ -12,7 +12,7 @@ export default function Cart() {
       <div className="flex flex-col items-center justify-center h-[70vh] px-4">
         <div className="text-6xl mb-4">🛒</div>
         <h2 className="text-xl font-bold text-gray-800">Корзина пуста</h2>
-        <p className="text-gray-500 mt-2 text-center">
+        <p className="text-gray-700 mt-2 text-center font-medium">
           Добавьте букеты из каталога
         </p>
         <button
@@ -31,7 +31,7 @@ export default function Cart() {
       <div className="px-4 py-4 bg-white border-b">
         <div className="flex items-center justify-between">
           <h1 className="text-xl font-bold">Корзина</h1>
-          <button onClick={clearCart} className="text-red-400 text-sm">
+          <button onClick={clearCart} className="text-red-500 text-sm font-medium">
             Очистить
           </button>
         </div>
@@ -82,7 +82,7 @@ export default function Cart() {
       <div className="px-4 mt-4">
         <div className="bg-white rounded-2xl p-4 shadow-sm">
           <div className="flex justify-between items-center text-lg">
-            <span className="font-medium">Итого:</span>
+            <span className="font-bold text-gray-900">Итого:</span>
             <span className="font-bold text-primary text-xl">{totalPrice()} ₽</span>
           </div>
           <button
