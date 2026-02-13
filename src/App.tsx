@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import Orders from './pages/Orders';
 import Favorites from './pages/Favorites';
 import About from './pages/About';
+import Contact from './pages/Contact';
 import Nav from './components/layout/Nav';
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <Nav />
     </div>
