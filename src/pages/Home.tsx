@@ -88,7 +88,7 @@ export default function Home() {
         )}
       </div>
       <div className="p-3">
-        <p className="text-sm font-medium text-gray-800 line-clamp-2 leading-tight">
+        <p className="text-sm font-semibold text-gray-900 line-clamp-2 leading-tight">
           {bouquet.name}
         </p>
         <div className="mt-2 flex items-baseline gap-2">
@@ -96,7 +96,7 @@ export default function Home() {
             {formatPrice(bouquet.price)}
           </span>
           {bouquet.oldPrice && (
-            <span className="text-xs text-gray-400 line-through">
+            <span className="text-xs text-gray-500 line-through">
               {formatPrice(bouquet.oldPrice)}
             </span>
           )}
@@ -163,7 +163,7 @@ export default function Home() {
               className="flex flex-col items-center justify-center bg-white rounded-2xl py-3.5 px-2 shadow-sm active:scale-95 transition-transform"
             >
               <span className="text-2xl mb-1">{cat.emoji}</span>
-              <span className="text-xs font-medium text-gray-700">
+              <span className="text-xs font-semibold text-gray-900">
                 {cat.label}
               </span>
             </button>
@@ -191,7 +191,7 @@ export default function Home() {
             : hits.length > 0
               ? hits.map(renderBouquetCard)
               : (
-                <p className="text-sm text-gray-400 py-8">
+                <p className="text-sm text-gray-600 font-medium py-8">
                   Скоро здесь появятся хиты
                 </p>
               )}
@@ -218,7 +218,7 @@ export default function Home() {
             : newArrivals.length > 0
               ? newArrivals.map(renderBouquetCard)
               : (
-                <p className="text-sm text-gray-400 py-8">
+                <p className="text-sm text-gray-600 font-medium py-8">
                   Скоро здесь появятся новинки
                 </p>
               )}
@@ -237,8 +237,8 @@ export default function Home() {
               <Phone size={16} className="text-primary-dark" />
             </div>
             <div>
-              <p className="text-sm font-medium">+7 917 876-59-58</p>
-              <p className="text-xs text-gray-500">Звоните и заказывайте</p>
+              <p className="text-sm font-semibold text-gray-900">+7 917 876-59-58</p>
+              <p className="text-xs font-medium text-gray-600">Звоните и заказывайте</p>
             </div>
           </a>
 
@@ -247,8 +247,8 @@ export default function Home() {
               <MapPin size={16} className="text-primary-dark" />
             </div>
             <div>
-              <p className="text-sm font-medium">д. Званка, ул. Приозёрная, д. 58</p>
-              <p className="text-xs text-gray-500">Казань</p>
+              <p className="text-sm font-semibold text-gray-900">д. Званка, ул. Приозёрная, д. 58</p>
+              <p className="text-xs font-medium text-gray-600">Казань</p>
             </div>
           </div>
 
@@ -257,8 +257,8 @@ export default function Home() {
               <Clock size={16} className="text-primary-dark" />
             </div>
             <div>
-              <p className="text-sm font-medium">Ежедневно 09:00 - 21:00</p>
-              <p className="text-xs text-gray-500">Без выходных</p>
+              <p className="text-sm font-semibold text-gray-900">Ежедневно 09:00 - 21:00</p>
+              <p className="text-xs font-medium text-gray-600">Без выходных</p>
             </div>
           </div>
         </div>

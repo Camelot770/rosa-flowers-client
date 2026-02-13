@@ -48,7 +48,7 @@ export default function Orders() {
       <div className="flex flex-col items-center justify-center h-[70vh] px-4">
         <div className="text-6xl mb-4">📦</div>
         <h2 className="text-xl font-bold text-gray-800">Заказов пока нет</h2>
-        <p className="text-gray-500 mt-2 text-center">
+        <p className="text-gray-700 mt-2 text-center font-medium">
           Ваши заказы будут отображаться здесь
         </p>
       </div>
@@ -76,21 +76,21 @@ export default function Orders() {
                 </div>
               </div>
 
-              <p className="text-xs text-gray-500">
+              <p className="text-xs font-medium text-gray-600">
                 {date.toLocaleDateString('ru-RU')} в {date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })}
               </p>
 
               <div className="mt-2 space-y-1">
                 {order.items.map((item) => (
                   <div key={item.id} className="flex justify-between text-sm">
-                    <span className="text-gray-800">{item.name} x{item.quantity}</span>
-                    <span className="font-medium text-gray-900">{item.price * item.quantity} ₽</span>
+                    <span className="font-medium text-gray-900">{item.name} x{item.quantity}</span>
+                    <span className="font-bold text-gray-900">{item.price * item.quantity} ₽</span>
                   </div>
                 ))}
               </div>
 
               <div className="border-t mt-2 pt-2 flex justify-between items-center">
-                <span className="text-sm text-gray-500">
+                <span className="text-sm font-medium text-gray-700">
                   {order.deliveryType === 'delivery' ? '🚗 Доставка' : '🏪 Самовывоз'}
                   {order.deliveryDate ? ` · ${order.deliveryDate}` : ''}
                 </span>

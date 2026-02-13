@@ -26,8 +26,8 @@ export default function About() {
               <MapPin size={20} className="text-primary" />
             </div>
             <div>
-              <p className="font-medium">Адрес</p>
-              <p className="text-sm text-gray-600 mt-0.5">
+              <p className="font-bold text-gray-900">Адрес</p>
+              <p className="text-sm font-medium text-gray-800 mt-0.5">
                 {settings.address || 'д. Званка, ул. Приозёрная, д. 58'}
               </p>
             </div>
@@ -44,7 +44,7 @@ export default function About() {
               <Phone size={20} className="text-green-500" />
             </div>
             <div>
-              <p className="font-medium">Телефон</p>
+              <p className="font-bold text-gray-900">Телефон</p>
               <p className="text-sm text-primary mt-0.5">
                 {settings.phone || '+7 917 876-59-58'}
               </p>
@@ -62,7 +62,7 @@ export default function About() {
               <Mail size={20} className="text-blue-500" />
             </div>
             <div>
-              <p className="font-medium">Email</p>
+              <p className="font-bold text-gray-900">Email</p>
               <p className="text-sm text-primary mt-0.5">
                 {settings.email || 'rozacvetov@list.ru'}
               </p>
@@ -77,8 +77,8 @@ export default function About() {
               <Clock size={20} className="text-amber-500" />
             </div>
             <div>
-              <p className="font-medium">Режим работы</p>
-              <p className="text-sm text-gray-600 mt-0.5">
+              <p className="font-bold text-gray-900">Режим работы</p>
+              <p className="text-sm font-medium text-gray-800 mt-0.5">
                 Ежедневно, {settings.work_hours || '9:00 – 21:00'}
               </p>
             </div>
@@ -87,8 +87,8 @@ export default function About() {
 
         {/* Delivery info */}
         <div className="bg-white rounded-xl p-4 shadow-sm">
-          <h3 className="font-semibold mb-2">🚗 Доставка</h3>
-          <ul className="text-sm text-gray-600 space-y-1">
+          <h3 className="font-bold text-gray-900 mb-2">🚗 Доставка</h3>
+          <ul className="text-sm font-medium text-gray-800 space-y-1">
             <li>• Стоимость доставки — {settings.delivery_price || '300'}₽</li>
             <li>• Бесплатно от {settings.free_delivery_from || '3000'}₽</li>
             <li>• Минимальный заказ — {settings.min_order || '1000'}₽</li>
@@ -97,8 +97,8 @@ export default function About() {
 
         {/* Bonus program */}
         <div className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl p-4">
-          <h3 className="font-semibold mb-2">⭐ Бонусная программа</h3>
-          <ul className="text-sm text-gray-600 space-y-1">
+          <h3 className="font-bold text-gray-900 mb-2">⭐ Бонусная программа</h3>
+          <ul className="text-sm font-medium text-gray-800 space-y-1">
             <li>• {settings.bonus_percent || '5'}% кэшбэк с каждого заказа</li>
             <li>• Оплата бонусами до {settings.max_bonus_discount || '20'}% заказа</li>
             <li>• 1 бонус = 1 рубль</li>
@@ -115,10 +115,10 @@ export default function About() {
           >
             <span className="text-2xl">📱</span>
             <div className="flex-1">
-              <p className="font-medium">Telegram канал</p>
+              <p className="font-bold text-gray-900">Telegram канал</p>
               <p className="text-sm text-primary">{settings.telegram_channel}</p>
             </div>
-            <ExternalLink size={16} className="text-gray-400" />
+            <ExternalLink size={16} className="text-gray-600" />
           </a>
         )}
       </div>

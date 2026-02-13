@@ -61,7 +61,7 @@ export default function Favorites() {
       <div className="flex flex-col items-center justify-center h-[70vh] px-4">
         <div className="text-6xl mb-4">💝</div>
         <h2 className="text-xl font-bold text-gray-800">Избранного пока нет</h2>
-        <p className="text-gray-500 mt-2 text-center">
+        <p className="text-gray-700 mt-2 text-center font-medium">
           Нажмите ❤️ на понравившемся букете, чтобы сохранить его
         </p>
         <button

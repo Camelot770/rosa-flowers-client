@@ -60,8 +60,8 @@ export default function Profile() {
             <Package size={20} className="text-blue-500" />
           </div>
           <div className="text-left flex-1">
-            <p className="font-semibold text-gray-900">Мои заказы</p>
-            <p className="text-xs text-gray-500">История заказов</p>
+            <p className="font-bold text-gray-900">Мои заказы</p>
+            <p className="text-xs font-medium text-gray-700">История заказов</p>
           </div>
         </button>
 
@@ -73,8 +73,8 @@ export default function Profile() {
             <Heart size={20} className="text-red-500" />
           </div>
           <div className="text-left flex-1">
-            <p className="font-semibold text-gray-900">Избранное</p>
-            <p className="text-xs text-gray-500">Понравившиеся букеты</p>
+            <p className="font-bold text-gray-900">Избранное</p>
+            <p className="text-xs font-medium text-gray-700">Понравившиеся букеты</p>
           </div>
         </button>
 
@@ -86,8 +86,8 @@ export default function Profile() {
             <Info size={20} className="text-primary" />
           </div>
           <div className="text-left flex-1">
-            <p className="font-semibold text-gray-900">О студии</p>
-            <p className="text-xs text-gray-500">Контакты и информация</p>
+            <p className="font-bold text-gray-900">О студии</p>
+            <p className="text-xs font-medium text-gray-700">Контакты и информация</p>
           </div>
         </button>
 
@@ -99,8 +99,8 @@ export default function Profile() {
             <MessageCircle size={20} className="text-purple-500" />
           </div>
           <div className="text-left flex-1">
-            <p className="font-semibold text-gray-900">Написать нам</p>
-            <p className="text-xs text-gray-500">Задайте вопрос</p>
+            <p className="font-bold text-gray-900">Написать нам</p>
+            <p className="text-xs font-medium text-gray-700">Задайте вопрос</p>
           </div>
         </button>
 
@@ -111,8 +111,8 @@ export default function Profile() {
               <Phone size={20} className="text-green-500" />
             </div>
             <div className="text-left flex-1">
-              <p className="font-semibold text-gray-900">{user.phone}</p>
-              <p className="text-xs text-gray-500">Ваш телефон</p>
+              <p className="font-bold text-gray-900">{user.phone}</p>
+              <p className="text-xs font-medium text-gray-700">Ваш телефон</p>
             </div>
           </div>
         )}
@@ -120,13 +120,13 @@ export default function Profile() {
         {/* Addresses */}
         {user?.addresses && user.addresses.length > 0 && (
           <div className="bg-white rounded-xl p-4 shadow-sm">
-            <h3 className="font-medium flex items-center gap-2 mb-2">
+            <h3 className="font-bold text-gray-900 flex items-center gap-2 mb-2">
               <MapPin size={16} className="text-primary" />
               Адреса
             </h3>
             {user.addresses.map((a: any) => (
-              <div key={a.id} className="text-sm text-gray-600 py-1.5 border-t first:border-0">
-                <span className="font-medium">{a.title}:</span> {a.street}, {a.house}
+              <div key={a.id} className="text-sm text-gray-800 py-1.5 border-t first:border-0">
+                <span className="font-semibold">{a.title}:</span> {a.street}, {a.house}
                 {a.apartment ? `, кв. ${a.apartment}` : ''}
               </div>
             ))}
