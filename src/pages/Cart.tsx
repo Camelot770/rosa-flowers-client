@@ -13,7 +13,7 @@ export default function Cart() {
         <div className="text-6xl mb-4">🛒</div>
         <h2 className="text-xl font-bold text-gray-800">Корзина пуста</h2>
         <p className="text-gray-500 mt-2 text-center">
-          Добавьте букеты из каталога или соберите свой в конструкторе
+          Добавьте букеты из каталога
         </p>
         <button
           onClick={() => navigate('/catalog')}
@@ -45,7 +45,7 @@ export default function Cart() {
               {item.image ? (
                 <img src={imageUrl(item.image)} alt={item.name} className="w-full h-full object-cover" />
               ) : (
-                <span className="text-3xl">{item.isConstructor ? '🎨' : '🌹'}</span>
+                <span className="text-3xl">🌹</span>
               )}
             </div>
             <div className="ml-3 flex-1">
@@ -55,11 +55,6 @@ export default function Cart() {
                   <Trash2 size={16} />
                 </button>
               </div>
-              {item.isConstructor && item.constructorData && (
-                <p className="text-xs text-gray-400 mt-0.5">
-                  {item.constructorData.flowers?.map((f: any) => `${f.name} x${f.quantity}`).join(', ')}
-                </p>
-              )}
               <div className="flex items-center justify-between mt-2">
                 <div className="flex items-center gap-2">
                   <button

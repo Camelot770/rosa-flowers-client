@@ -4,7 +4,6 @@ import { useUserStore } from './store/user';
 import Home from './pages/Home';
 import Catalog from './pages/Catalog';
 import BouquetDetail from './pages/BouquetDetail';
-import Constructor from './pages/Constructor';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Profile from './pages/Profile';
@@ -32,7 +31,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
         <Route path="/bouquet/:id" element={<BouquetDetail />} />
-        <Route path="/constructor" element={<Constructor />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/profile" element={<Profile />} />
