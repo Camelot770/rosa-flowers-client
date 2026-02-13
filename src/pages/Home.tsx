@@ -238,7 +238,7 @@ export default function Home() {
             </div>
             <div>
               <p className="text-sm font-medium">+7 917 876-59-58</p>
-              <p className="text-xs text-gray-400">Звоните и заказывайте</p>
+              <p className="text-xs text-gray-500">Звоните и заказывайте</p>
             </div>
           </a>
 
@@ -248,7 +248,7 @@ export default function Home() {
             </div>
             <div>
               <p className="text-sm font-medium">д. Званка, ул. Приозёрная, д. 58</p>
-              <p className="text-xs text-gray-400">Казань</p>
+              <p className="text-xs text-gray-500">Казань</p>
             </div>
           </div>
 
@@ -258,7 +258,7 @@ export default function Home() {
             </div>
             <div>
               <p className="text-sm font-medium">Ежедневно 09:00 - 21:00</p>
-              <p className="text-xs text-gray-400">Без выходных</p>
+              <p className="text-xs text-gray-500">Без выходных</p>
             </div>
           </div>
         </div>
