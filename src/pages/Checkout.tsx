@@ -77,8 +77,6 @@ export default function Checkout() {
           name: i.name,
           price: i.price,
           quantity: i.quantity,
-          isConstructor: i.isConstructor || false,
-          constructorData: i.constructorData || null,
         })),
         addressId: deliveryType === 'delivery' ? selectedAddress : null,
         deliveryType,
