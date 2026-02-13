@@ -50,8 +50,8 @@ export default function Cart() {
             </div>
             <div className="ml-3 flex-1">
               <div className="flex justify-between">
-                <p className="font-medium text-sm">{item.name}</p>
-                <button onClick={() => removeItem(item.id)} className="text-gray-300">
+                <p className="font-semibold text-sm text-gray-900">{item.name}</p>
+                <button onClick={() => removeItem(item.id)} className="text-gray-400">
                   <Trash2 size={16} />
                 </button>
               </div>
@@ -59,11 +59,11 @@ export default function Cart() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                    className="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center"
+                    className="w-7 h-7 bg-gray-200 rounded-full flex items-center justify-center text-gray-700"
                   >
                     <Minus size={12} />
                   </button>
-                  <span className="w-6 text-center font-medium text-sm">{item.quantity}</span>
+                  <span className="w-6 text-center font-bold text-sm text-gray-900">{item.quantity}</span>
                   <button
                     onClick={() => updateQuantity(item.id, item.quantity + 1)}
                     className="w-7 h-7 bg-primary text-white rounded-full flex items-center justify-center"

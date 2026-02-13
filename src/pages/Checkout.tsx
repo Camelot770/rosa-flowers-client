@@ -136,7 +136,7 @@ export default function Checkout() {
       <div className="px-4 py-3 space-y-4">
         {/* Delivery type */}
         <div className="bg-white rounded-xl p-4 shadow-sm">
-          <h3 className="font-semibold flex items-center gap-2 mb-3">
+          <h3 className="font-bold text-gray-900 flex items-center gap-2 mb-3">
             <MapPin size={18} className="text-primary" />
             Способ получения
           </h3>
@@ -193,7 +193,7 @@ export default function Checkout() {
 
         {/* Date & time */}
         <div className="bg-white rounded-xl p-4 shadow-sm">
-          <h3 className="font-semibold flex items-center gap-2 mb-3">
+          <h3 className="font-bold text-gray-900 flex items-center gap-2 mb-3">
             <Clock size={18} className="text-primary" />
             Дата и время
           </h3>
@@ -221,7 +221,7 @@ export default function Checkout() {
 
         {/* Recipient */}
         <div className="bg-white rounded-xl p-4 shadow-sm">
-          <h3 className="font-semibold flex items-center gap-2 mb-3">
+          <h3 className="font-bold text-gray-900 flex items-center gap-2 mb-3">
             <Gift size={18} className="text-primary" />
             Получатель
           </h3>
@@ -252,7 +252,7 @@ export default function Checkout() {
 
         {/* Card text */}
         <div className="bg-white rounded-xl p-4 shadow-sm">
-          <h3 className="font-semibold flex items-center gap-2 mb-3">
+          <h3 className="font-bold text-gray-900 flex items-center gap-2 mb-3">
             <MessageSquare size={18} className="text-primary" />
             Текст открытки
           </h3>
@@ -277,7 +277,7 @@ export default function Checkout() {
         {/* Bonus */}
         {user && user.bonusPoints > 0 && (
           <div className="bg-white rounded-xl p-4 shadow-sm">
-            <h3 className="font-semibold flex items-center gap-2 mb-3">
+            <h3 className="font-bold text-gray-900 flex items-center gap-2 mb-3">
               <CreditCard size={18} className="text-primary" />
               Бонусы ({user.bonusPoints} баллов)
             </h3>

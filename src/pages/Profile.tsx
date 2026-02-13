@@ -60,8 +60,8 @@ export default function Profile() {
             <Package size={20} className="text-blue-500" />
           </div>
           <div className="text-left flex-1">
-            <p className="font-medium">Мои заказы</p>
-            <p className="text-xs text-gray-400">История заказов</p>
+            <p className="font-semibold text-gray-900">Мои заказы</p>
+            <p className="text-xs text-gray-500">История заказов</p>
           </div>
         </button>
 
@@ -73,8 +73,8 @@ export default function Profile() {
             <Heart size={20} className="text-red-500" />
           </div>
           <div className="text-left flex-1">
-            <p className="font-medium">Избранное</p>
-            <p className="text-xs text-gray-400">Понравившиеся букеты</p>
+            <p className="font-semibold text-gray-900">Избранное</p>
+            <p className="text-xs text-gray-500">Понравившиеся букеты</p>
           </div>
         </button>
 
@@ -86,8 +86,8 @@ export default function Profile() {
             <Info size={20} className="text-primary" />
           </div>
           <div className="text-left flex-1">
-            <p className="font-medium">О студии</p>
-            <p className="text-xs text-gray-400">Контакты и информация</p>
+            <p className="font-semibold text-gray-900">О студии</p>
+            <p className="text-xs text-gray-500">Контакты и информация</p>
           </div>
         </button>
 
@@ -99,8 +99,8 @@ export default function Profile() {
             <MessageCircle size={20} className="text-purple-500" />
           </div>
           <div className="text-left flex-1">
-            <p className="font-medium">Написать нам</p>
-            <p className="text-xs text-gray-400">Задайте вопрос</p>
+            <p className="font-semibold text-gray-900">Написать нам</p>
+            <p className="text-xs text-gray-500">Задайте вопрос</p>
           </div>
         </button>
 
@@ -111,8 +111,8 @@ export default function Profile() {
               <Phone size={20} className="text-green-500" />
             </div>
             <div className="text-left flex-1">
-              <p className="font-medium">{user.phone}</p>
-              <p className="text-xs text-gray-400">Ваш телефон</p>
+              <p className="font-semibold text-gray-900">{user.phone}</p>
+              <p className="text-xs text-gray-500">Ваш телефон</p>
             </div>
           </div>
         )}

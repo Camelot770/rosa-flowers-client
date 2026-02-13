@@ -30,7 +30,7 @@ export default function Nav() {
               <div className="relative">
                 <Icon
                   size={22}
-                  className={active ? 'text-primary' : 'text-gray-400'}
+                  className={active ? 'text-primary' : 'text-gray-500'}
                 />
                 {tab.badge ? (
                   <span className="absolute -top-2 -right-2 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
@@ -39,7 +39,7 @@ export default function Nav() {
                 ) : null}
               </div>
               <span
-                className={`text-[10px] mt-1 ${active ? 'text-primary font-medium' : 'text-gray-400'}`}
+                className={`text-[10px] mt-1 font-medium ${active ? 'text-primary' : 'text-gray-500'}`}
               >
                 {tab.label}
               </span>
