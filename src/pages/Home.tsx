@@ -123,7 +123,7 @@ export default function Home() {
   return (
     <div className="pb-4">
       {/* Hero Banner */}
-      <div className="relative bg-gradient-to-br from-pink-400 via-primary to-pink-300 text-white px-5 pt-10 pb-8 rounded-b-[2rem] shadow-lg">
+      <div className="relative bg-gradient-to-br from-primary via-primary-dark to-primary text-white px-5 pt-10 pb-8 rounded-b-[2rem] shadow-lg">
         <div className="absolute top-4 right-4 opacity-20">
           <Flower2 size={80} />
         </div>
