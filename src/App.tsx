@@ -21,7 +21,7 @@ function App() {
     if (tg) {
       tg.ready();
       tg.expand();
-      tg.setHeaderColor('#F48FB1');
+      tg.setHeaderColor('#E91E63');
     }
     fetchProfile();
   }, []);
