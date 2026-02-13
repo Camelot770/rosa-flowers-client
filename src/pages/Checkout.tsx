@@ -202,7 +202,7 @@ export default function Checkout() {
             value={deliveryDate}
             onChange={(e) => setDeliveryDate(e.target.value)}
             min={new Date().toISOString().split('T')[0]}
-            className="w-full border rounded-xl px-3 py-2.5 text-sm mb-2"
+            className="w-full border rounded-xl px-3 py-2.5 text-sm text-gray-900 mb-2"
           />
           <div className="grid grid-cols-2 gap-2">
             {timeSlots.map((slot) => (
@@ -230,21 +230,21 @@ export default function Checkout() {
             placeholder="Имя получателя"
             value={recipientName}
             onChange={(e) => setRecipientName(e.target.value)}
-            className="w-full border rounded-xl px-3 py-2.5 text-sm mb-2"
+            className="w-full border rounded-xl px-3 py-2.5 text-sm text-gray-900 mb-2"
           />
           <input
             type="tel"
             placeholder="Телефон получателя"
             value={recipientPhone}
             onChange={(e) => setRecipientPhone(e.target.value)}
-            className="w-full border rounded-xl px-3 py-2.5 text-sm mb-2"
+            className="w-full border rounded-xl px-3 py-2.5 text-sm text-gray-900 mb-2"
           />
-          <label className="flex items-center gap-2 text-sm">
+          <label className="flex items-center gap-2 text-sm font-medium text-gray-800">
             <input
               type="checkbox"
               checked={isAnonymous}
               onChange={(e) => setIsAnonymous(e.target.checked)}
-              className="accent-primary"
+              className="accent-primary w-5 h-5"
             />
             Анонимная доставка
           </label>
@@ -260,7 +260,7 @@ export default function Checkout() {
             placeholder="Напишите текст для открытки (необязательно)"
             value={cardText}
             onChange={(e) => setCardText(e.target.value)}
-            className="w-full border rounded-xl px-3 py-2.5 text-sm h-20 resize-none"
+            className="w-full border rounded-xl px-3 py-2.5 text-sm text-gray-900 h-20 resize-none"
           />
         </div>
 
@@ -270,7 +270,7 @@ export default function Checkout() {
             placeholder="Комментарий к заказу"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            className="w-full border rounded-xl px-3 py-2.5 text-sm h-16 resize-none"
+            className="w-full border rounded-xl px-3 py-2.5 text-sm text-gray-900 h-16 resize-none"
           />
         </div>
 

@@ -27,6 +27,11 @@ body {
   box-sizing: border-box;
 }
 
+/* Force dark text in form inputs for Telegram WebView */
+input, select, textarea {
+  color: #111827 !important;
+}
+
 /* Hide scrollbar but keep functionality */
 ::-webkit-scrollbar {
   width: 0;

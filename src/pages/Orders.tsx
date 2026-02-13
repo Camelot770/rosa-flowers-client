@@ -76,15 +76,15 @@ export default function Orders() {
                 </div>
               </div>
 
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-gray-500">
                 {date.toLocaleDateString('ru-RU')} в {date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })}
               </p>
 
               <div className="mt-2 space-y-1">
                 {order.items.map((item) => (
                   <div key={item.id} className="flex justify-between text-sm">
-                    <span className="text-gray-600">{item.name} x{item.quantity}</span>
-                    <span>{item.price * item.quantity} ₽</span>
+                    <span className="text-gray-800">{item.name} x{item.quantity}</span>
+                    <span className="font-medium text-gray-900">{item.price * item.quantity} ₽</span>
                   </div>
                 ))}
               </div>
