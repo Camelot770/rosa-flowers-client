@@ -101,7 +101,7 @@ export default function Favorites() {
               <div>
                 <p
                   onClick={() => navigate(`/bouquet/${fav.bouquet.id}`)}
-                  className="font-medium cursor-pointer"
+                  className="font-bold text-gray-900 cursor-pointer"
                 >
                   {fav.bouquet.name}
                 </p>
