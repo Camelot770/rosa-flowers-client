@@ -18,17 +18,12 @@ interface Bouquet {
   category: string;
 }
 
-const CATEGORIES = [
+const PRICE_FILTERS = [
   { value: '', label: 'Все' },
-  { value: 'roses', label: 'Розы' },
-  { value: 'tulips', label: 'Тюльпаны' },
-  { value: 'author', label: 'Авторские' },
-  { value: 'peonies', label: 'Пионы' },
-  { value: 'exotic', label: 'Экзотика' },
-  { value: 'mixed', label: 'Микс' },
-  { value: 'lilies', label: 'Лилии' },
-  { value: 'hydrangea', label: 'Гортензия' },
-  { value: 'greenery', label: 'Зелень' },
+  { value: '0-2500', label: 'до 2 500 ₽' },
+  { value: '2500-4000', label: '2 500 – 4 000 ₽' },
+  { value: '4000-6000', label: '4 000 – 6 000 ₽' },
+  { value: '6000-99999', label: 'от 6 000 ₽' },
 ];
 
 const SORT_OPTIONS = [
@@ -48,7 +43,7 @@ export default function Catalog() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');
-  const [activeCategory, setActiveCategory] = useState(searchParams.get('category') || '');
+  const [activePriceFilter, setActivePriceFilter] = useState(searchParams.get('price') || '');
   const [sort, setSort] = useState('');
   const [showSort, setShowSort] = useState(false);
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
@@ -63,9 +58,9 @@ export default function Catalog() {
   }, []);
 
   useEffect(() => {
-    const categoryFromUrl = searchParams.get('category') || '';
-    if (categoryFromUrl !== activeCategory) {
-      setActiveCategory(categoryFromUrl);
+    const priceFromUrl = searchParams.get('price') || '';
+    if (priceFromUrl !== activePriceFilter) {
+      setActivePriceFilter(priceFromUrl);
     }
   }, [searchParams]);
 
@@ -79,13 +74,17 @@ export default function Catalog() {
 
   useEffect(() => {
     fetchBouquets();
-  }, [activeCategory, debouncedSearch, sort]);
+  }, [activePriceFilter, debouncedSearch, sort]);
 
   const fetchBouquets = async () => {
     setLoading(true);
     try {
       const params: Record<string, string> = {};
-      if (activeCategory) params.category = activeCategory;
+      if (activePriceFilter) {
+        const [min, max] = activePriceFilter.split('-');
+        if (min) params.priceMin = min;
+        if (max) params.priceMax = max;
+      }
       if (debouncedSearch) params.search = debouncedSearch;
       if (sort) params.sort = sort;
 
@@ -98,10 +97,10 @@ export default function Catalog() {
     }
   };
 
-  const handleCategoryChange = (category: string) => {
-    setActiveCategory(category);
-    if (category) {
-      setSearchParams({ category });
+  const handlePriceFilterChange = (filter: string) => {
+    setActivePriceFilter(filter);
+    if (filter) {
+      setSearchParams({ price: filter });
     } else {
       setSearchParams({});
     }
@@ -177,19 +176,19 @@ export default function Catalog() {
         </div>
       )}
 
-      {/* Category filter pills */}
+      {/* Price filter pills */}
       <div className="flex gap-2 overflow-x-auto mb-4 -mx-4 px-4 scrollbar-hide">
-        {CATEGORIES.map((cat) => (
+        {PRICE_FILTERS.map((pf) => (
           <button
-            key={cat.value}
-            onClick={() => handleCategoryChange(cat.value)}
+            key={pf.value}
+            onClick={() => handlePriceFilterChange(pf.value)}
             className={`flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-              activeCategory === cat.value
+              activePriceFilter === pf.value
                 ? 'bg-primary text-white'
                 : 'bg-white text-gray-800 font-semibold border border-gray-200'
             }`}
           >
-            {cat.label}
+            {pf.label}
           </button>
         ))}
       </div>
