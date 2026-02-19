@@ -128,11 +128,10 @@ export default function Home() {
         </div>
         <h1 className="text-3xl font-bold tracking-tight">Роза цветов</h1>
         <p className="text-pink-100 text-sm mt-1 font-medium">
-          Студия флористики
+          Студия стабилизированной флористики
         </p>
         <p className="text-white/80 text-xs mt-3 leading-relaxed max-w-[260px]">
-          Стабилизированные композиции с доставкой. Собираем с любовью, доставляем с
-          заботой.
+          Живые цветы, которые не вянут. Букеты, которые остаются надолго — с доставкой по городу.
         </p>
         <div className="flex items-center gap-4 mt-5">
           <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1.5">
