@@ -15,7 +15,8 @@ export default function About() {
       <div className="bg-gradient-to-r from-pink-400 to-pink-500 text-white px-4 py-8 text-center">
         <div className="text-5xl mb-3">🌹</div>
         <h1 className="text-2xl font-bold">{settings.studio_name || 'Роза цветов'}</h1>
-        <p className="text-pink-100 mt-1">Студия флористики</p>
+        <p className="text-pink-100 mt-1">Студия стабилизированной флористики</p>
+        <p className="text-pink-200 text-xs mt-2">Живые цветы, которые не вянут. Букеты, которые остаются надолго.</p>
       </div>
 
       <div className="px-4 py-4 space-y-3">
