@@ -32,8 +32,8 @@ export default function Checkout() {
     }
   }, [user]);
 
-  const deliveryPrice = parseInt(settings.delivery_price || '300');
-  const freeFrom = parseInt(settings.free_delivery_from || '3000');
+  const deliveryPrice = parseInt(settings.delivery_price || '500');
+  const freeFrom = parseInt(settings.free_delivery_from || '5000');
   const maxBonusPercent = parseInt(settings.max_bonus_discount || '20');
 
   const subtotal = totalPrice();

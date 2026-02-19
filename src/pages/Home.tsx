@@ -26,12 +26,12 @@ interface Bouquet {
 }
 
 const categories = [
-  { label: 'Розы', value: 'roses', emoji: '🌹' },
-  { label: 'Тюльпаны', value: 'tulips', emoji: '🌷' },
-  { label: 'Авторские', value: 'author', emoji: '🎨' },
-  { label: 'Пионы', value: 'peonies', emoji: '🌸' },
-  { label: 'Экзотика', value: 'exotic', emoji: '🌺' },
-  { label: 'Все букеты', value: 'all', emoji: '💐' },
+  { label: 'Новинки', value: 'new', emoji: '✨' },
+  { label: 'Хиты продаж', value: 'hit', emoji: '🔥' },
+  { label: 'до 2 000 ₽', value: '0-2000', emoji: '💐' },
+  { label: '2 000–4 000 ₽', value: '2000-4000', emoji: '🌸' },
+  { label: '4 000–6 000 ₽', value: '4000-6000', emoji: '🌹' },
+  { label: 'Все букеты', value: 'all', emoji: '🌺' },
 ];
 
 export default function Home() {
@@ -131,13 +131,13 @@ export default function Home() {
           Студия флористики
         </p>
         <p className="text-white/80 text-xs mt-3 leading-relaxed max-w-[260px]">
-          Свежие букеты с доставкой по городу. Собираем с любовью, доставляем с
+          Стабилизированные композиции с доставкой. Собираем с любовью, доставляем с
           заботой.
         </p>
         <div className="flex items-center gap-4 mt-5">
           <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1.5">
             <Truck size={14} />
-            <span className="text-xs font-medium">Доставка 1-2 ч</span>
+            <span className="text-xs font-medium">Доставка 1-3 ч</span>
           </div>
           <div className="flex items-center gap-1.5 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1.5">
             <Clock size={14} />
@@ -157,7 +157,7 @@ export default function Home() {
                 navigate(
                   cat.value === 'all'
                     ? '/catalog'
-                    : `/catalog?category=${cat.value}`
+                    : `/catalog?filter=${cat.value}`
                 )
               }
               className="flex flex-col items-center justify-center bg-white rounded-2xl py-3.5 px-2 shadow-sm active:scale-95 transition-transform"

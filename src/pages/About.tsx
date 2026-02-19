@@ -89,8 +89,9 @@ export default function About() {
         <div className="bg-white rounded-xl p-4 shadow-sm">
           <h3 className="font-bold text-gray-900 mb-2">🚗 Доставка</h3>
           <ul className="text-sm font-medium text-gray-800 space-y-1">
-            <li>• Стоимость доставки — {settings.delivery_price || '300'}₽</li>
-            <li>• Бесплатно от {settings.free_delivery_from || '3000'}₽</li>
+            <li>• Стоимость доставки — {settings.delivery_price || '500'}₽</li>
+            <li>• Бесплатно от {settings.free_delivery_from || '5000'}₽</li>
+            <li>• Срок доставки — 1–3 часа</li>
             <li>• Минимальный заказ — {settings.min_order || '1000'}₽</li>
           </ul>
         </div>
