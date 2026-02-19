@@ -18,10 +18,12 @@ interface Bouquet {
   category: string;
 }
 
-const PRICE_FILTERS = [
+const CATALOG_FILTERS = [
   { value: '', label: 'Все' },
-  { value: '0-2500', label: 'до 2 500 ₽' },
-  { value: '2500-4000', label: '2 500 – 4 000 ₽' },
+  { value: 'new', label: 'Новинки' },
+  { value: 'hit', label: 'Хиты продаж' },
+  { value: '0-2000', label: 'до 2 000 ₽' },
+  { value: '2000-4000', label: '2 000 – 4 000 ₽' },
   { value: '4000-6000', label: '4 000 – 6 000 ₽' },
   { value: '6000-99999', label: 'от 6 000 ₽' },
 ];
@@ -43,7 +45,7 @@ export default function Catalog() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');
-  const [activePriceFilter, setActivePriceFilter] = useState(searchParams.get('price') || '');
+  const [activeFilter, setActiveFilter] = useState(searchParams.get('filter') || '');
   const [sort, setSort] = useState('');
   const [showSort, setShowSort] = useState(false);
   const [favorites, setFavorites] = useState<Set<number>>(new Set());
@@ -58,9 +60,9 @@ export default function Catalog() {
   }, []);
 
   useEffect(() => {
-    const priceFromUrl = searchParams.get('price') || '';
-    if (priceFromUrl !== activePriceFilter) {
-      setActivePriceFilter(priceFromUrl);
+    const filterFromUrl = searchParams.get('filter') || '';
+    if (filterFromUrl !== activeFilter) {
+      setActiveFilter(filterFromUrl);
     }
   }, [searchParams]);
 
@@ -74,14 +76,18 @@ export default function Catalog() {
 
   useEffect(() => {
     fetchBouquets();
-  }, [activePriceFilter, debouncedSearch, sort]);
+  }, [activeFilter, debouncedSearch, sort]);
 
   const fetchBouquets = async () => {
     setLoading(true);
     try {
       const params: Record<string, string> = {};
-      if (activePriceFilter) {
-        const [min, max] = activePriceFilter.split('-');
+      if (activeFilter === 'new') {
+        params.isNew = 'true';
+      } else if (activeFilter === 'hit') {
+        params.isHit = 'true';
+      } else if (activeFilter) {
+        const [min, max] = activeFilter.split('-');
         if (min) params.priceMin = min;
         if (max) params.priceMax = max;
       }
@@ -97,10 +103,10 @@ export default function Catalog() {
     }
   };
 
-  const handlePriceFilterChange = (filter: string) => {
-    setActivePriceFilter(filter);
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
     if (filter) {
-      setSearchParams({ price: filter });
+      setSearchParams({ filter });
     } else {
       setSearchParams({});
     }
@@ -176,19 +182,19 @@ export default function Catalog() {
         </div>
       )}
 
-      {/* Price filter pills */}
+      {/* Catalog filter pills */}
       <div className="flex gap-2 overflow-x-auto mb-4 -mx-4 px-4 scrollbar-hide">
-        {PRICE_FILTERS.map((pf) => (
+        {CATALOG_FILTERS.map((f) => (
           <button
-            key={pf.value}
-            onClick={() => handlePriceFilterChange(pf.value)}
+            key={f.value}
+            onClick={() => handleFilterChange(f.value)}
             className={`flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-              activePriceFilter === pf.value
+              activeFilter === f.value
                 ? 'bg-primary text-white'
                 : 'bg-white text-gray-800 font-semibold border border-gray-200'
             }`}
           >
-            {pf.label}
+            {f.label}
           </button>
         ))}
       </div>
