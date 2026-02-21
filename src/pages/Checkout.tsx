@@ -95,7 +95,10 @@ export default function Checkout() {
 
       // Create payment
       try {
-        const { data: payment } = await api.post('/payment/create', { orderId: order.id });
+        const { data: payment } = await api.post('/payment/create', {
+          orderId: order.id,
+          returnUrl: `${window.location.origin}/orders`,
+        });
         if (payment.confirmationUrl) {
           clearCart();
           openLink(payment.confirmationUrl);
