@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useUserStore } from './store/user';
+import { initWebApp } from './utils/platform';
 import Home from './pages/Home';
 import Catalog from './pages/Catalog';
 import BouquetDetail from './pages/BouquetDetail';
@@ -17,12 +18,7 @@ function App() {
   const fetchProfile = useUserStore((s) => s.fetchProfile);
 
   useEffect(() => {
-    const tg = (window as any).Telegram?.WebApp;
-    if (tg) {
-      tg.ready();
-      tg.expand();
-      tg.setHeaderColor('#E91E63');
-    }
+    initWebApp();
     fetchProfile();
   }, []);
 

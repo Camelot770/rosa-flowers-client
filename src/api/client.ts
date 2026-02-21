@@ -9,12 +9,22 @@ const api = axios.create({
   },
 });
 
-// Add Telegram init data to every request
+// Add messenger init data to every request (Telegram or Max)
 api.interceptors.request.use((config) => {
+  // Telegram WebApp
   const tg = (window as any).Telegram?.WebApp;
   if (tg?.initData) {
     config.headers['X-Telegram-Init-Data'] = tg.initData;
+    return config;
   }
+
+  // Max WebApp
+  const max = (window as any).WebApp;
+  if (max?.initData) {
+    config.headers['X-Max-Init-Data'] = max.initData;
+    return config;
+  }
+
   return config;
 });
 
