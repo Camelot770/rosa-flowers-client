@@ -4,6 +4,7 @@ import { Heart, ShoppingBag } from 'lucide-react';
 import api from '../api/client';
 import { imageUrl } from '../utils/image';
 import { useCartStore } from '../store/cart';
+import { hapticSuccess } from '../utils/platform';
 
 interface FavItem {
   id: number;
@@ -44,8 +45,7 @@ export default function Favorites() {
       price: b.price,
       image: b.images[0]?.url,
     });
-    const tg = (window as any).Telegram?.WebApp;
-    tg?.HapticFeedback?.notificationOccurred('success');
+    hapticSuccess();
   };
 
   if (loading) {

@@ -4,6 +4,7 @@ import { Plus, Minus, ShoppingBag } from 'lucide-react';
 import api from '../api/client';
 import { imageUrl } from '../utils/image';
 import { useCartStore } from '../store/cart';
+import { hapticSuccess } from '../utils/platform';
 
 interface ConstructorItem {
   id: number;
@@ -117,8 +118,7 @@ export default function Constructor() {
       constructorData,
     });
 
-    const tg = (window as any).Telegram?.WebApp;
-    tg?.HapticFeedback?.notificationOccurred('success');
+    hapticSuccess();
     navigate('/cart');
   };
 
