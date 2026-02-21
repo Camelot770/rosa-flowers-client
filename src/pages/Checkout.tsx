@@ -4,6 +4,7 @@ import { MapPin, Clock, CreditCard, Gift, MessageSquare } from 'lucide-react';
 import api from '../api/client';
 import { useCartStore } from '../store/cart';
 import { useUserStore } from '../store/user';
+import { openLink, hapticSuccess } from '../utils/platform';
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -97,12 +98,7 @@ export default function Checkout() {
         const { data: payment } = await api.post('/payment/create', { orderId: order.id });
         if (payment.confirmationUrl) {
           clearCart();
-          const tg = (window as any).Telegram?.WebApp;
-          if (tg?.openLink) {
-            tg.openLink(payment.confirmationUrl);
-          } else {
-            window.open(payment.confirmationUrl, '_blank');
-          }
+          openLink(payment.confirmationUrl);
           navigate('/orders');
           return;
         }
@@ -111,8 +107,7 @@ export default function Checkout() {
       }
 
       clearCart();
-      const tg = (window as any).Telegram?.WebApp;
-      tg?.HapticFeedback?.notificationOccurred('success');
+      hapticSuccess();
       navigate('/orders');
     } catch (error) {
       console.error('Order error:', error);
@@ -122,10 +117,11 @@ export default function Checkout() {
     }
   };
 
-  if (items.length === 0) {
-    navigate('/cart');
-    return null;
-  }
+  useEffect(() => {
+    if (items.length === 0) navigate('/cart');
+  }, [items.length, navigate]);
+
+  if (items.length === 0) return null;
 
   return (
     <div className="pb-4">
