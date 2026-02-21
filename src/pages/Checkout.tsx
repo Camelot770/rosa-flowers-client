@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MapPin, Clock, CreditCard, Gift, MessageSquare } from 'lucide-react';
 import api from '../api/client';
@@ -22,6 +22,7 @@ export default function Checkout() {
   const [bonusUsed, setBonusUsed] = useState(0);
   const [selectedAddress, setSelectedAddress] = useState<number | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const orderSubmitted = useRef(false);
 
   const [settings, setSettings] = useState<Record<string, string>>({});
 
@@ -100,6 +101,7 @@ export default function Checkout() {
           returnUrl: `${window.location.origin}/orders`,
         });
         if (payment.confirmationUrl) {
+          orderSubmitted.current = true;
           clearCart();
           openLink(payment.confirmationUrl);
           navigate('/orders');
@@ -109,6 +111,7 @@ export default function Checkout() {
         // Payment not configured — order still created
       }
 
+      orderSubmitted.current = true;
       clearCart();
       hapticSuccess();
       navigate('/orders');
@@ -121,10 +124,10 @@ export default function Checkout() {
   };
 
   useEffect(() => {
-    if (items.length === 0) navigate('/cart');
+    if (items.length === 0 && !orderSubmitted.current) navigate('/cart');
   }, [items.length, navigate]);
 
-  if (items.length === 0) return null;
+  if (items.length === 0 && !orderSubmitted.current) return null;
 
   return (
     <div className="pb-4">
