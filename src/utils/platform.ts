@@ -24,7 +24,7 @@ export function initWebApp() {
   if (tg) {
     tg.ready();
     tg.expand();
-    tg.setHeaderColor('#E91E63');
+    tg.setHeaderColor('#F4EFE5');
     return;
   }
 
